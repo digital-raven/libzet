@@ -20,7 +20,7 @@ dependencies = [
 
 license = {text = 'GPLv2'}
 
-version = '2.2.0'
+version = '2.2.1'
 
 [project.urls]
 Homepage = 'https://github.com/OneRedDime/libzet'

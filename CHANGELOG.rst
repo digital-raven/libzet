@@ -11,7 +11,8 @@ and this project adheres to `Semantic Versioning <https://semver.org/spec/v2.0.0
 
 Fixed
 -----
-- 
+- Fixed printing times for 'event_begin', 'event_end', 'recurring_stop'.
+- Fixed editing select headings in edit_zettels.
 
 [2.2.0] - 2023-03-14
 ====================
