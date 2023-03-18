@@ -1,0 +1,26 @@
+[build-system]
+requires = ['setuptools', 'wheel']
+build-backend = 'setuptools.build_meta'
+
+[project]
+name = 'libzet'
+authors = [
+    {name = 'OneRedDime', email = 'onereddime@protonmail.com'},
+]
+
+description = 'Python3 library for zettel reading.'
+readme = 'README.rst'
+requires-python = '>=3.7, <4'
+
+dependencies = [
+    'icalendar',
+    'pyyaml',
+    'superdate',
+]
+
+license = {text = 'GPLv2'}
+
+version = '2.2.0'
+
+[project.urls]
+Homepage = 'https://github.com/OneRedDime/libzet'
