@@ -51,7 +51,10 @@ class Attributes(dict):
 
         for k, v in d.items():
             if v and (k in dtfields or 'date' in k):
-                d[k] = str(v._date)
+                if type(v._date) is datetime.date:
+                    d[k] = v.strftime('%Y-%m-%d, %a')
+                if type(v._date) is datetime.datetime:
+                    d[k] = v.strftime('%Y-%m-%d, %a, %H:%M')
 
         return d
 
