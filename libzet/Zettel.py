@@ -1,5 +1,6 @@
 import os
 import yaml
+from datetime import timedelta, datetime
 
 from icalendar import Event
 from superdate import parse_date
@@ -160,7 +161,7 @@ class Zettel:
             event.add('dtstart', self.attrs['due_date']._date)
 
         # recurring zettels should also have event_begin
-        if 'recurring' in self and self.attrs['recurring']:
+        if 'recurring' in self.attrs and self.attrs['recurring']:
             rrule = self.attrs['recurring']
 
             if 'recurring_stop' in self.attrs and self.attrs['recurring_stop']:
