@@ -6,6 +6,14 @@ All notable changes will be documented in this file.
 The format is based on `Keep a Changelog <https://keepachangelog.com/en/1.0.0/>`_,
 and this project adheres to `Semantic Versioning <https://semver.org/spec/v2.0.0.html>`_.
 
+[2.2.3] - 2023-03-22
+====================
+
+Fixed
+-----
+- Fixed ICS functions in Zettel.py after running through them in another
+  application.
+
 [2.2.2] - 2023-03-19
 ====================
 
