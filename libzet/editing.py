@@ -363,7 +363,13 @@ def _load_zettel(path, zettel_format='md'):
         A reference to the newly loaded zettel.
     """
     with open(path) as f:
-        z = str_to_zettels(f.read(), zettel_format)[0]
+        zettels = str_to_zettels(f.read(), zettel_format)
+
+        # Possibly from a blank file.
+        if not zettels:
+            z = Zettel(title='')
+        else:
+            z = zettels[0]
 
     # Guarantee _loadpath
     z.attrs['_loadpath'] = path
