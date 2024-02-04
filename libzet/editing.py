@@ -299,7 +299,12 @@ def copy_zettels(zettels, dest, zettel_format='md'):
     save_zettels(zettels, zettel_format)
 
     # Copy raw files
-    newzets = [shutil.copy(z.attrs['_loadpath'], dest) for z in zettels]
+    newzets = []
+    for z in zettels:
+        try:
+            newzets.append(shutil.copy(z.attrs['_loadpath'], dest))
+        except shutil.SameFileError:
+            newzets.append(dest)
 
     # Load and return the new zettels
     newzets = load_zettels(newzets, zettel_format)
@@ -325,8 +330,29 @@ def move_zettels(zettels, dest, zettel_format='md'):
     Raises:
         See copy_zettels and delete_zettels.
     """
-    newzets = copy_zettels(zettels, dest, zettel_format)
-    delete_zettels(zettels)
+    if type(zettels) is not list:
+        zettels = [zettels]
+
+    if any(['_loadpath' not in z.attrs for z in zettels]):
+        raise KeyError('All zettels need a _loadpath to copy.')
+
+    # Save first to sync up.
+    save_zettels(zettels, zettel_format)
+
+    # Copy raw files
+    newzets = []
+    deletions = []
+    for z in zettels:
+        try:
+            newzets.append(shutil.copy(z.attrs['_loadpath'], dest))
+            deletions.append(z)
+        except shutil.SameFileError:
+            newzets.append(dest)
+
+    delete_zettels(deletions)
+
+    # Load and return the new zettels
+    newzets = load_zettels(newzets, zettel_format)
     return newzets
 
 
